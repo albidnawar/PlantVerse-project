@@ -33,6 +33,15 @@
     <style>
         .font-pop {
             font-family: 'Poppins', sans-serif;
+
+        }
+
+        .custom-hr {
+            width: 1288px;
+            height: 1px;
+            background: #1E1E1E;
+            border: none;
+            margin: 0;
         }
     </style>
 </head>
@@ -109,26 +118,240 @@
 
 
         <!-- variety options -->
-        <div class="join flex justify-center my-4 gap-5">
+        <div class="join flex justify-center mb-20 mt-5 gap-5">
             <a href="landing-page.html"><button class="btn btn-outline btn-info">Popular</button></a>
             <a href="Indoor.html"><button class="btn btn-outline btn-success">Indoor</button></a>
             <a href="outdoor.html"><button class="btn btn-outline btn-warning">Outdoor</button></a>
         </div>
     </header>
     <main class="h-screen flex items-center justify-center">
-        <div class="w-[1300px] h-[500px] bg-base-200 flex justify-between px-20 py-10 shadow-lg">
-            <div>
-                <p>Description</p>
+        <div class="w-[1365px] h-[806px] bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
+            <div class="flex justify-between">
+                <div>
+                    <p>Description</p>
+                </div>
+                <div>
+
+                    <p>Quantity</p>
+                </div>
+                <div>
+                    <p>Remove</p>
+
+                </div>
+                <div>
+                    <p>Price</p>
+                </div>
             </div>
-            <div class="flex gap-12">
-                <p>Size</p>
-                <p>Quantity</p>
+            <!-- product 01 -->
+            <div class="pt-8 flex  items-center">
+                <!-- image and description -->
+                <div class="flex gap-4">
+                    <div class="avatar">
+                        <div class="w-20 mask mask-squircle">
+                            <img src="images/philodendron.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-2xl">Philodendron</p>
+                        <p>product code PN100</p>
+                    </div>
+                </div>
+                <!-- Quantity input -->
+                <div class="ml-[150px]">
+                    <input type="text" placeholder="Type here" class="input input-bordered input-md w-[150px]" />
+                    
+                </div>
+                <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                <!-- Remove Button -->
+                <div class="ml-[170px]">
+                    <button class="btn btn-square btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Price -->
+                <div class="ml-[325px]">
+                    <p class="text-2xl">$40</p>
+                </div>
             </div>
-            <div  class="flex gap-12">
-                <p>Remove</p>
-                <p>Price</p>
+            <!-- product 02 -->
+            <div class="pt-8 flex  items-center">
+                <!-- image and description -->
+                <div class="flex gap-4">
+                    <div class="avatar">
+                        <div class="w-20 mask mask-squircle">
+                            <img src="images/philodendron.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-2xl">Philodendron</p>
+                        <p>product code PN100</p>
+                    </div>
+                </div>
+                <!-- Quantity input -->
+                <div class="ml-[150px]">
+                    <input type="text" placeholder="Type here" class="input input-bordered input-md w-[150px]" />
+
+                </div>
+                <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                <!-- Remove Button -->
+                <div class="ml-[170px]">
+                    <button class="btn btn-square btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Price -->
+                <div class="ml-[325px]">
+                    <p class="text-2xl">$40</p>
+                </div>
             </div>
+            <!-- product 03 -->
+            <div class="pt-8 flex  items-center">
+                <!-- image and description -->
+                <div class="flex gap-4">
+                    <div class="avatar">
+                        <div class="w-20 mask mask-squircle">
+                            <img src="images/philodendron.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-2xl">Philodendron</p>
+                        <p>product code PN100</p>
+                    </div>
+                </div>
+                <!-- Quantity input -->
+                <div class="ml-[150px]">
+                    <input type="text" placeholder="Type here" class="input input-bordered input-md w-[150px]" />
+
+                </div>
+                <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                <!-- Remove Button -->
+                <div class="ml-[170px]">
+                    <button class="btn btn-square btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Price -->
+                <div class="ml-[325px]">
+                    <p class="text-2xl">$40</p>
+                </div>
+            </div>
+            <!-- product 04 -->
+            <div class="pt-8 flex  items-center">
+                <!-- image and description -->
+                <div class="flex gap-4">
+                    <div class="avatar">
+                        <div class="w-20 mask mask-squircle">
+                            <img src="images/philodendron.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-2xl">Philodendron</p>
+                        <p>product code PN100</p>
+                    </div>
+                </div>
+                <!-- Quantity input -->
+                <div class="ml-[150px]">
+                    <input type="text" placeholder="Type here" class="input input-bordered input-md w-[150px]" />
+
+                </div>
+                <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                <!-- Remove Button -->
+                <div class="ml-[170px]">
+                    <button class="btn btn-square btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Price -->
+                <div class="ml-[325px]">
+                    <p class="text-2xl">$40</p>
+                </div>
+            </div>
+            <!-- product 05 -->
+            <div class="pt-8 flex  items-center">
+                <!-- image and description -->
+                <div class="flex gap-4">
+                    <div class="avatar">
+                        <div class="w-20 mask mask-squircle">
+                            <img src="images/philodendron.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-2xl">Philodendron</p>
+                        <p>product code PN100</p>
+                    </div>
+                </div>
+                <!-- Quantity input -->
+                <div class="ml-[150px]">
+                    <input type="text" placeholder="Type here" class="input input-bordered input-md w-[150px]" />
+
+                </div>
+                <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                <!-- Remove Button -->
+                <div class="ml-[170px]">
+                    <button class="btn btn-square btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Price -->
+                <div class="ml-[325px]">
+                    <p class="text-2xl">$40</p>
+                </div>
+            </div>
+
+            <!-- Cart discount and total amount section -->
+            <div class="flex items-center justify-between">
+
+                <div class="stats shadow mt-10">
+                    <div class="stat">
+                        <div class="stat-title text-2xl pb-3">Input Discount Coupon</div>
+                       <div class="flex">
+                        <div><input type="text" placeholder="Type here"
+                            class="input input-bordered input-secondary w-full max-w-xs" /></div>
+                            <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
+                       </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title text-2xl">Discount Amount</div>
+                        <div class="stat-value text-primary">$50</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-title text-2xl">Total Items</div>
+                        <div class="stat-value text-secondary">5</div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title text-2xl">Total</div>
+                        <div class="stat-value text-secondary">$2000</div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-wide btn-primary h-20 mt-8 text-3xl">Checkout</button>
+
+                </div>
+            </div>
+
         </div>
+
     </main>
     <footer>
 

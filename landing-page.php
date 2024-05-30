@@ -218,7 +218,7 @@ if (isset($_SESSION['user_name'])) {
     </div>
     <!-- variety options -->
     <div class="join flex justify-center my-4 gap-5">
-      <a href="landing-page.html"><button class="btn btn-outline btn-info">Popular</button></a>
+      <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>
       <a href="Indoor.html"><button class="btn btn-outline btn-success">Indoor</button></a>
       <a href="outdoor.html"><button class="btn btn-outline btn-warning">Outdoor</button></a>
     </div>

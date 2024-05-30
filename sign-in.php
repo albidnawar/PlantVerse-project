@@ -1,43 +1,49 @@
 <?php
+session_start();
 
-$servername = "localhost";
-$db_username = "root"; // Update this if your DB username is different
-$db_password = "";     // Update this if your DB password is different
-$dbname = "plantverse";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// Create connection
-$conn = new mysqli($servername, $db_username, $db_password, $dbname);
+    $servername = "localhost";
+    $db_username = "root"; // Update this if your DB username is different
+    $db_password = "";     // Update this if your DB password is different
+    $dbname = "plantverse";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    // Create connection
+    $conn = new mysqli($servername, $db_username, $db_password, $dbname);
 
-// Get form data
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-// Escape special characters for SQL
-$email = $conn->real_escape_string($email);
-$password = $conn->real_escape_string($password);
-
-// Check if email exists
-$sql = "SELECT * FROM users WHERE email='$email'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Fetch the user data
-    $user = $result->fetch_assoc();
-    // Verify the password
-    if (password_verify($password, $user['password'])) {
-        echo "<script> window.location.href = 'landing-page.html';</script>";
-        // Here you can start a session and set session variables if needed
-    } else {
-        echo "Invalid password. Please try again.";
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-} else {
-    echo "No account found with that email address. Please sign up.";
-}
 
-$conn->close();
+    // Prepare and bind
+    $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id, $name, $hashed_password);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashed_password)) {
+            // Regenerate session ID to prevent session fixation attacks
+            session_regenerate_id(true);
+
+            $_SESSION['user_id'] = $id;
+            $_SESSION['user_name'] = $name;
+            header("Location: landing-page.php");
+            exit; // Always exit after redirecting
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "No user found with that email address.";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (isset($_SESSION['user_name'])) {
+    $username = $_SESSION['user_name'];
+} else {
+    // Redirect to the login page if the user is not logged in
+    header("Location: sign-in.html");
+    exit; // Make sure to exit after redirecting
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-theme="cupcake">
 
@@ -83,7 +96,9 @@
             <div class="dropdown dropdown-end">
               <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                  <img alt="Tailwind CSS Navbar component" src="images/Formal pic-01.png" />
+                  <?php
+                    echo "$username";
+                  ?>
                 </div>
               </div>
               <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -94,7 +109,7 @@
                   </a>
                 </li>
                 <li><a>Admin</a></li>
-                <li><a href="sign-in.html">Logout</a></li>
+                <li><a href="logout.php?action=logout">Logout</a></li>
               </ul>
             </div>
           </div>

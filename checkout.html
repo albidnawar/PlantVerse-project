@@ -47,7 +47,7 @@
 </head>
 
 <body class="w-[1519px] h-[1000px] bg-no-repeat bg-cover bg-left"
-        style="background-image: url(images/backdrop-green-leaves.jpg)";>
+    style="background-image: url(images/backdrop-green-leaves.jpg)" ;>
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
@@ -129,55 +129,167 @@
         <!-- cart and payment part -->
         <div class="flex gap-20">
             <!-- cart details -->
-            <div class="card w-[500px] h-[500px] bg-base-100 shadow-xl">
+            <div class="card w-[600px]  bg-base-100 shadow-xl">
                 <div class="card-body">
-                  <h2 class="card-title">Cart Summary</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                </div>
-              </div>
-              <!-- payment system -->
-              <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                  <h2 class="card-title">Shipping Information</h2>
-                  <label class="form-control w-full max-w-xs">
-                    <div class="label">
-                      <span class="label-text">Your Name</span>
+                    <h2 class="card-title ">Cart Summary</h2>
+                    <!-- item 01 -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-5 mt-5">
+                            <div class="avatar">
+                                <div class="w-12 mask mask-squircle">
+                                    <img src="images/philodendron.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <p>Philodendron</p>
+                                <p>Qty: <span>4</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$65.00</p>
+                        </div>
                     </div>
-                    <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                  </label>
-                  
-                  <label class="form-control w-full max-w-xs">
-                    <div class="label">
-                        <span class="label-text">Shipping Address</span>
-                      </div>
-                    <input type="text" placeholder="Address" class="input input-bordered w-full max-w-xs" />
-                  </label>
-                  <label class="form-control w-full max-w-xs">
-                    <input type="text" placeholder="Country" class="input input-bordered w-full max-w-xs" />
-                  </label>
-                  <h2 class="card-title mt-5">Payment Details</h2>
-                  <label class="form-control w-full max-w-xs">
-                    <div class="label">
-                        <span class="label-text">Card Information</span>
-                      </div>
-                    <input type="text" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs" />
-                  </label>
-                  <div class="flex gap-2">
-                    <label class="form-control w-full max-w-xs">
-                        <input type="text" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" />
-                      </label>
-                      <label class="form-control w-full max-w-xs">
-                        <input type="text" placeholder="CVC" class="input input-bordered w-full max-w-xs" />
-                      </label>
-                  </div>
-                  <input type="submit" value="Place Order" class="btn btn-primary" />
-
-                 
+                    <!-- item 02 -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-5 mt-5">
+                            <div class="avatar">
+                                <div class="w-12 mask mask-squircle">
+                                    <img src="images/philodendron.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <p>Philodendron</p>
+                                <p>Qty: <span>4</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$65.00</p>
+                        </div>
+                    </div>
+                    <!-- item 03 -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-5 mt-5">
+                            <div class="avatar">
+                                <div class="w-12 mask mask-squircle">
+                                    <img src="images/philodendron.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <p>Philodendron</p>
+                                <p>Qty: <span>4</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$65.00</p>
+                        </div>
+                    </div>
+                    <!-- item 04 -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-5 mt-5">
+                            <div class="avatar">
+                                <div class="w-12 mask mask-squircle">
+                                    <img src="images/philodendron.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <p>Philodendron</p>
+                                <p>Qty: <span>4</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$65.00</p>
+                        </div>
+                    </div>
+                    <!-- item 05 -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-5 mt-5">
+                            <div class="avatar">
+                                <div class="w-12 mask mask-squircle">
+                                    <img src="images/philodendron.jpg" />
+                                </div>
+                            </div>
+                            <div>
+                                <p>Philodendron</p>
+                                <p>Qty: <span>4</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$65.00</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-5">
+                        <div>
+                            <p>Subtotal</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$125.00</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="text-gray-400">Shipping <br>Within 3-5 working days</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$5.00</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="font-bold text-xl">Total Due</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-xl">$130.00</p>
+                        </div>
+                    </div>
 
                 </div>
-              </div>
+            </div>
+            <!-- payment system -->
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Shipping Information</h2>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Your Name</span>
+                        </div>
+                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    </label>
+
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Shipping Address</span>
+                        </div>
+                        <input type="text" placeholder="Address" class="input input-bordered w-full max-w-xs" />
+                    </label>
+                    <label class="form-control w-full max-w-xs">
+                        <input type="text" placeholder="Country" class="input input-bordered w-full max-w-xs" />
+                    </label>
+                    <h2 class="card-title mt-5">Payment Details</h2>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Card Information</span>
+                        </div>
+                        <input type="text" placeholder="1234 1234 1234 1234"
+                            class="input input-bordered w-full max-w-xs" />
+                    </label>
+                    <div class="flex gap-2">
+                        <label class="form-control w-full max-w-xs">
+                            <input type="text" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <input type="text" placeholder="CVC" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                    </div>
+                    <input type="submit" value="Place Order" class="btn btn-primary" />
+
+
+
+                </div>
+            </div>
         </div>
-        
+
     </main>
     <footer>
 

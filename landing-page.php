@@ -95,7 +95,7 @@ if (isset($_SESSION['user_name'])) {
             </div>
             <div class="dropdown dropdown-end">
               <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
+                <div class="w-30 rounded-full pt-1 text-xs">
                   <?php
                     echo "$username";
                   ?>
@@ -103,7 +103,7 @@ if (isset($_SESSION['user_name'])) {
               </div>
               <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                  <a class="justify-between">
+                  <a class="justify-between " href="profile.html">
                     Profile
 
                   </a>

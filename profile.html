@@ -126,130 +126,11 @@
         </div>
     </header>
     <main class="h-screen flex items-center justify-center">
-        <!-- cart and payment part -->
-        <div class="flex gap-20">
-            <!-- cart details -->
-            <div class="card w-[600px]  bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title ">Cart Summary</h2>
-                    <!-- item 01 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 02 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 03 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 04 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 05 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-between mt-5">
-                        <div>
-                            <p>Subtotal</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$125.00</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="text-gray-400">Shipping <br>Within 3-5 working days</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$5.00</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="flex justify-between">
-                        <div>
-                            <p class="font-bold text-xl">Total Due</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$130.00</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- payment system -->
+        <!-- profile and placed orders -->
+        <div class="flex gap-20 mt-10">
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <h2 class="card-title">Shipping Information</h2>
+                    <h2 class="card-title text-3xl">User Info</h2>
                     <label class="form-control w-full max-w-xs">
                         <div class="label">
                             <span class="label-text">Your Name</span>
@@ -259,35 +140,95 @@
 
                     <label class="form-control w-full max-w-xs">
                         <div class="label">
-                            <span class="label-text">Shipping Address</span>
+                            <span class="label-text">Your Email Address</span>
                         </div>
-                        <input type="text" placeholder="Address" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" placeholder="Email Address" class="input input-bordered w-full max-w-xs" />
                     </label>
-                    <label class="form-control w-full max-w-xs">
-                        <input type="text" placeholder="Country" class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <h2 class="card-title mt-5">Payment Details</h2>
                     <label class="form-control w-full max-w-xs">
                         <div class="label">
-                            <span class="label-text">Card Information</span>
+                            <span class="label-text">Your Phone Number</span>
                         </div>
-                        <input type="text" placeholder="1234 1234 1234 1234"
+                        <input type="text" placeholder="Phone" class="input input-bordered w-full max-w-xs" />
+                    </label>
+
+                    <!-- password change -->
+                    <h2 class="card-title mt-5">Change Password</h2>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Password</span>
+                        </div>
+                        <input type="text" placeholder="Password"
                             class="input input-bordered w-full max-w-xs" />
                     </label>
-                    <div class="flex gap-2">
-                        <label class="form-control w-full max-w-xs">
-                            <input type="text" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" />
-                        </label>
-                        <label class="form-control w-full max-w-xs">
-                            <input type="text" placeholder="CVC" class="input input-bordered w-full max-w-xs" />
-                        </label>
-                    </div>
-                    <a href="OrderPlaced.html"><input type="submit" value="Place Order" class="btn btn-wide btn-primary mt-3" /></a>
-
-
-
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Rewrite Password</span>
+                        </div>
+                        <input type="text" placeholder="Rewrite Password"
+                            class="input input-bordered w-full max-w-xs" />
+                    </label>
+                    <button class="btn btn-primary mt-5">Submit</button>
                 </div>
             </div>
+            <!-- Order details -->
+            <div class="card w-[600px]  bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title text-3xl">Your Orders</h2>
+                    <!-- order 01 -->
+                    <div class="flex justify-between mt-5 text-green-900 font-bold">
+                        <div>
+                            <p>Order No</p>
+                        </div>
+                        <div>
+        
+                            <p>Date</p>
+                        </div>
+                        <div>
+                            <p class="ml-3">Status</p>
+        
+                        </div>
+                        <div>
+                            <p>Total</p>
+                        </div>
+                        <div>
+                            <p>Info</p>
+                        </div>
+                    </div>
+
+                    <!-- order 01 -->
+                    <div class="flex justify-between items-center mt-1">
+                        <div><p>#AN0001</p></div>
+                        <div>June 01,2024</div>
+                        <div><p>placed</p></div>
+                        <div><p>$135.00</p></div>
+                        <div><button class="btn btn-xs">Info</button></div>
+                    </div>
+                    <!-- order 02 -->
+                    <div class="flex justify-between items-center mt-1">
+                        <div><p>#AN0001</p></div>
+                        <div>June 01,2024</div>
+                        <div><p>placed</p></div>
+                        <div><p>$135.00</p></div>
+                        <div><button class="btn btn-xs">Info</button></div>
+                    </div>
+                    <!-- order 03 -->
+                    <div class="flex justify-between items-center mt-1">
+                        <div><p>#AN0001</p></div>
+                        <div>June 01,2024</div>
+                        <div><p>placed</p></div>
+                        <div><p>$135.00</p></div>
+                        <div><button class="btn btn-xs">Info</button></div>
+                    </div>
+                    <!-- order 05 -->
+                    <div class="flex justify-between items-center mt-1">
+                        <div><p>#AN0001</p></div>
+                        <div>June 01,2024</div>
+                        <div><p>placed</p></div>
+                        <div><p>$135.00</p></div>
+                        <div><button class="btn btn-xs">Info</button></div>
+                    </div>
+                </div>
+            </div>            
         </div>
 
     </main>

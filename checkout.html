@@ -282,8 +282,20 @@
                             <input type="text" placeholder="CVC" class="input input-bordered w-full max-w-xs" />
                         </label>
                     </div>
-                    <a href="OrderPlaced.html"><input type="submit" value="Place Order" class="btn btn-wide btn-primary mt-3" /></a>
-
+                    <button class="btn" onclick="my_modal_5.showModal()">Place Order</button>
+                    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                        <div class="modal-box">
+                            <h3 class="font-bold text-2xl">Your Order is Placed!</h3>
+                            <p class="py-4">Press to see your order progress</p>
+                            <a href="profile.html"><button class="btn  btn-primary">Your Orders</button></a>
+                            <div class="modal-action">
+                                <form method="dialog">
+                                    <!-- if there is a button in form, it will close the modal -->
+                                    <button class="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
 
 
                 </div>

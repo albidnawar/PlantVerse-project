@@ -172,62 +172,56 @@
             </div>
             <!-- Order details -->
             <div class="card w-[600px]  bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title text-3xl">Your Orders</h2>
-                    <!-- order 01 -->
-                    <div class="flex justify-between mt-5 text-green-900 font-bold">
-                        <div>
-                            <p>Order No</p>
-                        </div>
-                        <div>
-        
-                            <p>Date</p>
-                        </div>
-                        <div>
-                            <p class="ml-3">Status</p>
-        
-                        </div>
-                        <div>
-                            <p>Total</p>
-                        </div>
-                        <div>
-                            <p>Info</p>
-                        </div>
-                    </div>
-
-                    <!-- order 01 -->
-                    <div class="flex justify-between items-center mt-1">
-                        <div><p>#AN0001</p></div>
-                        <div>June 01,2024</div>
-                        <div><p>placed</p></div>
-                        <div><p>$135.00</p></div>
-                        <div><button class="btn btn-xs">Info</button></div>
-                    </div>
-                    <!-- order 02 -->
-                    <div class="flex justify-between items-center mt-1">
-                        <div><p>#AN0001</p></div>
-                        <div>June 01,2024</div>
-                        <div><p>placed</p></div>
-                        <div><p>$135.00</p></div>
-                        <div><button class="btn btn-xs">Info</button></div>
-                    </div>
-                    <!-- order 03 -->
-                    <div class="flex justify-between items-center mt-1">
-                        <div><p>#AN0001</p></div>
-                        <div>June 01,2024</div>
-                        <div><p>placed</p></div>
-                        <div><p>$135.00</p></div>
-                        <div><button class="btn btn-xs">Info</button></div>
-                    </div>
-                    <!-- order 05 -->
-                    <div class="flex justify-between items-center mt-1">
-                        <div><p>#AN0001</p></div>
-                        <div>June 01,2024</div>
-                        <div><p>placed</p></div>
-                        <div><p>$135.00</p></div>
-                        <div><button class="btn btn-xs">Info</button></div>
-                    </div>
-                </div>
+                <div class="overflow-x-auto">
+                    <table class="table">
+                      <!-- head -->
+                      <thead>
+                        <tr>
+                          <th>Order No</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- row 1 -->
+                        <tr class="hover">
+                          <th>#AN0001</th>
+                          <td>June 01,2024</td>
+                          <td>placed</td>
+                          <td>$135.00</td>
+                        </tr>
+                        <!-- row 2 -->
+                        <tr class="hover">
+                            <th>#AN0001</th>
+                            <td>June 01,2024</td>
+                            <td>placed</td>
+                            <td>$135.00</td>
+                          </tr>
+                        <!-- row 3 -->
+                        <tr class="hover">
+                            <th>#AN0001</th>
+                            <td>June 01,2024</td>
+                            <td>placed</td>
+                            <td>$135.00</td>
+                          </tr>
+                        <!-- row 04 -->
+                        <tr class="hover">
+                            <th>#AN0001</th>
+                            <td>June 01,2024</td>
+                            <td>placed</td>
+                            <td>$135.00</td>
+                          </tr>
+                        <!-- row 05 -->
+                        <tr class="hover">
+                            <th>#AN0001</th>
+                            <td>June 01,2024</td>
+                            <td>placed</td>
+                            <td>$135.00</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
             </div>            
         </div>
 

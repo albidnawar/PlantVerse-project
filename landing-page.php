@@ -56,7 +56,7 @@ if (isset($_SESSION['user_name'])) {
     <nav>
       <div class="navbar bg-base-100 justify-between">
         <div class="flex">
-          <a class="btn btn-ghost text-xl" href="landing-page.html">PlantVerse</a>
+          <a class="btn btn-ghost text-xl" href="landing-page.php">PlantVerse</a>
         </div>
         <div class="flex  w-20">
           <img src="images/Plantverse-logo-01.png" alt="">

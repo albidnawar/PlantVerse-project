@@ -1,3 +1,17 @@
+<?php
+$host = 'localhost';
+$db = 'product';
+$user = 'root';
+$pass = '';
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$result = $conn->query("SELECT * FROM products ");
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-theme="cupcake">
 
@@ -32,6 +46,20 @@
     .font-pop {
       font-family: 'Poppins', sans-serif;
     }
+    .cards-container {
+            margin: 0 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .card {
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        .card img {
+            width: 100%;
+        }
   </style>
 </head>
 
@@ -52,8 +80,8 @@
           <div class="dropdown dropdown-hover">
             <div tabindex="0" role="button" class="btn m-1">Others</div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a href="fertilizer.html">Fertilizer</a></li>
-              <li><a href="tools.html">Tools</a></li>
+              <li><a href="fertilizer.php">Fertilizer</a></li>
+              <li><a href="tools.php">Tools</a></li>
             </ul>
           </div>
 
@@ -203,104 +231,34 @@
     <!-- variety options -->
     <div class="join flex justify-center my-4 gap-5">
       <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>
-      <a href="Indoor.html"><button class="btn btn-outline btn-success">Indoor</button></a>
-      <a href="outdoor.html"><button class="btn btn-outline btn-warning">Outdoor</button></a>
+      <a href="Indoor.php"><button class="btn btn-outline btn-success">Indoor</button></a>
+      <a href="outdoor.php"><button class="btn btn-outline btn-warning">Outdoor</button></a>
     </div>
   </header>
 
   <main>
     <!-- indoor carts 01-->
-    <div class="flex px-20 py-5 gap-5 justify-between">
-      <!-- cart 1 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Aglaonema.jpg" alt="Aglaonema" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Aglaonema
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p>Large gloosy leaves, Air puifying, Slow-growing.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <!-- cart 2 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Snake Plant.jpg" alt="Snake Plant" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Snake Plant</h2>
-          <p>Sword-shaped Long Leaves, air-purifier, Highly Adaptable.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- cart 03 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Areca Palm.jpg" alt="Areca Palm" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Areca Palm 
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p> Lance-shaped Leaflets, Vibrant Green Leaves, Non-toxic.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
+<div class="cards-container">
+        <?php while ($row = $result->fetch_assoc()): ?>
+          <?php if ($row['product_type'] === 'outdoor'): ?>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <figure>
+                    <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title"><?= $row['name'] ?></h2>
+                    <p><?= $row['description'] ?></p>
+                    <div class="card-actions flex items-center justify-between">
+                        <p class="text-2xl"><strong>$<?= $row['price'] ?></strong></p>
+                        <a href="#" class="btn btn-success">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+        <?php endwhile; ?>
     </div>
-    <!-- indoor carts 02-->
-    <div class="flex px-20 py-5 gap-5 justify-between">
-      <!-- cart 4 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/China Bonsai.jpg" alt="China Bonsai" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">China Bonsai</h2>
-          <p>Artistic, Evoke a sense of harmony, Air-purifier.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <!-- cart 5 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Money Plant.jpg" alt="Money Plant" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Money Plant</h2>
-          <p>Big Heart-shaped leaves, Pest Resistant, Non-toxic.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
 
-      <!-- cart 6 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Palm Tree.jpg" alt="Palm Tree" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Palm Tree
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p>Long Arching Fronds, Moderate Growth, Air-purifying.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
+       
   </main>
 
   <footer>

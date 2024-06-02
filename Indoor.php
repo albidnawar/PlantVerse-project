@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM products ");
 ?>
 
 <!DOCTYPE html>
@@ -40,14 +40,13 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
         }
       }
     }
-    
   </script>
   <!--custom styles-->
   <style>
     .font-pop {
       font-family: 'Poppins', sans-serif;
     }
-        .cards-container {
+    .cards-container {
             margin: 0 50px;
             display: flex;
             flex-wrap: wrap;
@@ -110,21 +109,19 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
             </div>
             <div class="dropdown dropdown-end">
               <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-30 rounded-full pt-1 text-xs">
-                  <?php
-                    echo "$username";
-                  ?>
+                <div class="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src="images/Formal pic-01.png" />
                 </div>
               </div>
               <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                  <a class="justify-between " href="profile.html">
+                  <a class="justify-between" href="profile.html">
                     Profile
 
                   </a>
                 </li>
-                <li><a href="admin.php">Admin</a></li>
-                <li><a href="logout.php?action=logout">Logout</a></li>
+                <li><a>Admin</a></li>
+                <li><a href="sign-in.html">Logout</a></li>
               </ul>
             </div>
           </div>
@@ -240,11 +237,10 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
   </header>
 
   <main>
-    <!-- popular carts 01-->
-    <div class="cards-container">
+    <!-- indoor carts 01-->
+<div class="cards-container">
         <?php while ($row = $result->fetch_assoc()): ?>
-          <?php if ($row['product_type'] === 'landing'): ?>
-
+          <?php if ($row['product_type'] === 'indoor'): ?>
             <div class="card w-96 bg-base-100 shadow-xl">
                 <figure>
                     <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
@@ -259,12 +255,10 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
                 </div>
             </div>
             <?php endif; ?>
-
         <?php endwhile; ?>
-
     </div>
-    
-    
+
+       
   </main>
 
   <footer>

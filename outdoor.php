@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'product';
+$db = 'plantverse';
 $user = 'root';
 $pass = '';
 $conn = new mysqli($host, $user, $pass, $db);

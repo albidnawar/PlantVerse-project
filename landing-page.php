@@ -1,14 +1,15 @@
 <?php
-session_start();
+$host = 'localhost';
+$db = 'product';
+$user = 'root';
+$pass = '';
+$conn = new mysqli($host, $user, $pass, $db);
 
-// Check if the user is logged in
-if (isset($_SESSION['user_name'])) {
-    $username = $_SESSION['user_name'];
-} else {
-    // Redirect to the login page if the user is not logged in
-    header("Location: sign-in.html");
-    exit; // Make sure to exit after redirecting
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+$result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +47,20 @@ if (isset($_SESSION['user_name'])) {
     .font-pop {
       font-family: 'Poppins', sans-serif;
     }
+        .cards-container {
+            margin: 0 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .card {
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        .card img {
+            width: 100%;
+        }
   </style>
 </head>
 
@@ -226,97 +241,25 @@ if (isset($_SESSION['user_name'])) {
 
   <main>
     <!-- popular carts 01-->
-    <div class="flex px-20 py-5 gap-5 justify-between">
-      <!-- cart 1 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/philodendron.jpg" alt="philodendron" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Philodendron
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p>Heart-shaped leaves, easy indoor care, air-purifying.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">15$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <!-- cart 2 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/peace lily.jpg" alt="peace lily" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Peace Lily</h2>
-          <p>Graceful, air-purifying, thrives in shade.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">25$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- cart 03 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/aloe vera.jpg" alt="aloe vera" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Aloe vera 
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p> Succulent superstar, soothing gel, thrives indoors.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
+    <div class="cards-container">
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <figure>
+                    <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title"><?= $row['name'] ?></h2>
+                    <p><?= $row['description'] ?></p>
+                    <div class="card-actions flex items-center justify-between">
+                        <p class="text-2xl"><strong>$<?= $row['price'] ?></strong></p>
+                        <a href="#" class="btn btn-success">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
     </div>
-    <!-- popular carts 02-->
-    <div class="flex px-20 py-5 gap-5 justify-between">
-      <!-- cart 4 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/Monstera-plant.png" alt="Monstera-plant" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Monstera</h2>
-          <p>A verdant beauty, its sprawling foliage adds a lush, vibrant presence to any room.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-      <!-- cart 5 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/rose.png" alt="rose" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Rose</h2>
-          <p>With its soft petals and enchanting aroma, this flower embodies timeless beauty and allure.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- cart 6 -->
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="images/marigold.png" alt="marigold" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">Marigold
-            <div class="badge badge-primary">Best Seller</div>
-          </h2>
-          <p>With vibrant hues reminiscent of sunshine, this flower brings a burst of happiness to any setting.</p>
-          <div class="card-actions flex  items-center justify-between">
-            <h3 class="text-2xl">40$</h3>
-            <button class="btn btn-success">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    
+    
   </main>
 
   <footer>

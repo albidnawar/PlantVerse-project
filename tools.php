@@ -120,7 +120,7 @@ $result = $conn->query("SELECT * FROM products ");
 
                   </a>
                 </li>
-                <li><a>Admin</a></li>
+                <li><a href="admin-login.html">Admin</a></li>
                 <li><a href="sign-in.html">Logout</a></li>
               </ul>
             </div>

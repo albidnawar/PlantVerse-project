@@ -123,7 +123,7 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 
                   </a>
                 </li>
-                <li><a href="admin.php">Admin</a></li>
+                <li><a href="admin-login.html">Admin</a></li>
                 <li><a href="logout.php?action=logout">Logout</a></li>
               </ul>
             </div>

@@ -131,45 +131,43 @@
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title text-3xl">User Info</h2>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Your Name</span>
-                        </div>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    </label>
-
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Your Email Address</span>
-                        </div>
-                        <input type="text" placeholder="Email Address" class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Your Phone Number</span>
-                        </div>
-                        <input type="text" placeholder="Phone" class="input input-bordered w-full max-w-xs" />
-                    </label>
-
-                    <!-- password change -->
-                    <h2 class="card-title mt-5">Change Password</h2>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Password</span>
-                        </div>
-                        <input type="text" placeholder="Password"
-                            class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Rewrite Password</span>
-                        </div>
-                        <input type="text" placeholder="Rewrite Password"
-                            class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <button class="btn btn-primary mt-5">Submit</button>
+                    <form action="update_user.php" method="POST">
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Your Name</span>
+                            </div>
+                            <input type="text" name="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Your Email Address</span>
+                            </div>
+                            <input type="email" name="email" placeholder="Email Address" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Your Phone Number</span>
+                            </div>
+                            <input type="text" name="phone" placeholder="Phone" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <h2 class="card-title mt-5">Change Password</h2>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Password</span>
+                            </div>
+                            <input type="password" name="password" placeholder="Password" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Rewrite Password</span>
+                            </div>
+                            <input type="password" name="password_confirmation" placeholder="Rewrite Password" class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                    </form>
                 </div>
             </div>
+
             <!-- Order details -->
             <div class="card w-[600px]  bg-base-100 shadow-xl">
                 <div class="overflow-x-auto">

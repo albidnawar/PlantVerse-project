@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 // Get form data
 $user = $_POST['name'];
 $email = $_POST['email'];
+$phone = $_POST['phone'];
 $pass = $_POST['password'];
 $confirm_pass = $_POST['confirm_password'];
 
@@ -41,7 +42,7 @@ if ($result->num_rows > 0) {
 }
 
 // Construct the SQL query
-$sql = "INSERT INTO users (name, email, password) VALUES ('$user', '$email', '$hashed_pass')";
+$sql = "INSERT INTO users (name, email, phone, password) VALUES ('$user', '$email','$phone', '$hashed_pass')";
 
 if ($conn->query($sql) === TRUE) {
     echo "<script> window.location.href = 'sign-in.html';</script>";

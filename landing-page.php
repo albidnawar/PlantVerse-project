@@ -61,8 +61,6 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
     <!-- Nav bar -->
     <?php include 'components/navbar.php'; ?>
 
-
-
     <!-- slider -->
     <?php include 'components/slider.php'; ?>
     <!-- variety options -->

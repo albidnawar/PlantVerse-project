@@ -60,12 +60,8 @@ $result = $conn->query("SELECT * FROM products ");
   <header class="md:container md:mx-auto">
     <!-- Nav bar -->
     <?php include 'components/navbar.php'; ?>
-
-
-
     <!-- slider -->
     <?php include 'components/slider.php'; ?>
-
     <!-- variety options -->
     <div class="join flex justify-center my-4 gap-5">
       <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>

@@ -1,17 +1,6 @@
 <?php
 
-$servername = "localhost";
-$db_username = "root"; // Update this if your DB username is different
-$db_password = "";     // Update this if your DB password is different
-$dbname = "plantverse";
-
-// Create connection
-$conn = new mysqli($servername, $db_username, $db_password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'components/connect.php';
 
 // Get form data
 $user = $_POST['name'];

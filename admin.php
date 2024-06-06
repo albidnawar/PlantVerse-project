@@ -1,13 +1,7 @@
 <?php
-$host = 'localhost';
-$db = 'plantverse';
-$user = 'root';
-$pass = '';
-$conn = new mysqli($host, $user, $pass, $db);
+  
+  include 'components/connect.php';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['product_id']) && isset($_POST['name']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['image_url']) && isset($_POST['product_type'])) {

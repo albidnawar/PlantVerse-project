@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
 
         echo "<p class='alert alert-success'>Product deleted successfully!</p>";
-    } elseif (isset($_POST['update_id'])) {
+    } elseif (isset($_POST['update_id']) && isset($_POST['update_name']) && isset($_POST['update_description']) && isset($_POST['update_price']) && isset($_POST['update_image_url']) && isset($_POST['update_product_type'])) {
         $update_id = $_POST['update_id'];
         $name = $_POST['update_name'];
         $description = $_POST['update_description'];
@@ -133,8 +133,8 @@ if (isset($_GET['delete'])) {
             <textarea class="form-control input input-bordered w-full max-w-xs mt-2" id="update_description" name="update_description" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" step="0.01" class="form-control input input-bordered w-full max-w-xs mt-2" id="price" name="price" required>
+            <label for="update_price" class="form-label">New Price</label>
+            <input type="number" step="0.01" class="form-control input input-bordered w-full max-w-xs mt-2" id="update_price" name="update_price" required>
         </div>
         </div>
         <div class="flex gap-5">
@@ -180,6 +180,7 @@ if (isset($_GET['delete'])) {
                     <p><?= $row['description'] ?></p>
                     <div class="card-actions flex items-center justify-between">
                         <p class="text-2xl"><strong>$<?= $row['price'] ?></strong></p>
+                        <p class="text-2xl"><strong><?= $row['product_id'] ?></strong></p>
                         <a href="admin.php?delete=<?= $row['product_id']; ?>" class="btn btn-error">delete</a>
                     </div>
                 </div>

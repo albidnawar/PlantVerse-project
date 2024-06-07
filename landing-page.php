@@ -87,7 +87,8 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
                     <div class="card-actions flex items-center justify-between mt-5">
                       <p class="text-2xl"><strong>$<?= $row['price'] ?></strong></p>
                       <div class="mr-4">
-                        <input type="number" name="qty" class="input input-bordered input-sm w-full max-w-xs" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1"></div>
+                        <input type="number" name="qty" class="input input-bordered input-sm w-full max-w-xs" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+                      </div>
                       <a href="#" class="btn btn-success">Buy Now</a>
                     </div>
                 </div>

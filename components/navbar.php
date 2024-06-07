@@ -1,4 +1,13 @@
 <?php
+  session_start();
+
+  // Check if the user is logged in
+  if (isset($_SESSION['user_name'])) {
+      $username = $_SESSION['user_name'];
+  } else {
+      $username = 'guest';
+  }
+
    if(isset($message)){
       foreach($message as $message){
          echo '
@@ -9,6 +18,7 @@
          ';
       }
    }
+   
 ?>
 
 <nav>
@@ -60,14 +70,17 @@
                 </div>
               </div>
               <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <a class="justify-between " href="profile.php">
-                    Profile
-
-                  </a>
-                </li>
+              <li>
+                <?php if ($username != 'guest'): ?>
+                <a class="justify-between" href="profile.php">Profile</a>
+                <?php else: ?>
+                <a class="justify-between" href="sign-in.html">User</a>
+                <?php endif; ?>
+              </li>
                 <li><a href="admin-login.html">Admin</a></li>
-                <li><a href="logout.php?action=logout">Logout</a></li>
+                <?php if ($username != 'guest'): ?>
+                  <li><a href="logout.php?action=logout">Logout</a></li>
+                <?php endif; ?>
               </ul>
             </div>
           </div>

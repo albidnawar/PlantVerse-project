@@ -63,7 +63,7 @@
             </div>
             <div class="dropdown dropdown-end">
               <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                <div class="w-30 rounded-full pt-1 text-xs">
+                <div class="w-[200px] rounded-full pt-1 text-xs">
                   <?php
                     echo "$username";
                   ?>

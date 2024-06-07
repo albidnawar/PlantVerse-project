@@ -1,6 +1,7 @@
 <?php
 include 'components/connect.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['product_id']) && isset($_POST['name']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['image_url']) && isset($_POST['product_type'])) {
         $product_id = $_POST['product_id'];

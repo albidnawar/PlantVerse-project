@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->fetch();
 
         // Debugging: Display the hashed password retrieved from the database
-        echo "Hashed Password from DB: " . $hashed_password . "<br>";
-        echo "Entered Password: " . $admin_password . "<br>";
-
+        echo "Hashed Password from DB: " . htmlspecialchars($hashed_password) . "<br>";
+        echo "Entered Password: " . htmlspecialchars($admin_password) . "<br>";
+        
         if (password_verify($admin_password, $hashed_password)) {
             // Regenerate session ID to prevent session fixation attacks
             session_regenerate_id(true);

@@ -57,8 +57,8 @@
         <!-- variety options -->
         <div class="join flex justify-center  mt-5 gap-5">
             <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>
-            <a href="Indoor.html"><button class="btn btn-outline btn-success">Indoor</button></a>
-            <a href="outdoor.html"><button class="btn btn-outline btn-warning">Outdoor</button></a>
+            <a href="Indoor.php"><button class="btn btn-outline btn-success">Indoor</button></a>
+            <a href="outdoor.php"><button class="btn btn-outline btn-warning">Outdoor</button></a>
         </div>
     </header>
     <main class="h-screen flex items-center justify-center">

@@ -117,8 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
         <!-- variety options -->
         <div class="join flex justify-center mb-20 mt-5 gap-5">
             <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>
-            <a href="Indoor.html"><button class="btn btn-outline btn-success">Indoor</button></a>
-            <a href="outdoor.html"><button class="btn btn-outline btn-warning">Outdoor</button></a>
+            <a href="Indoor.php"><button class="btn btn-outline btn-success">Indoor</button></a>
+            <a href="outdoor.php"><button class="btn btn-outline btn-warning">Outdoor</button></a>
         </div>
     </header>
 
@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                     </div>
                 </div>
                 <div class="ml-10">
-                    <a href="checkout.html"><button
+                    <a href="checkout.php"><button
                             class="btn btn-wide btn-primary h-20 mt-8 text-3xl">Checkout</button></a>
                 </div>
             </div>

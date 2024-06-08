@@ -63,7 +63,7 @@
     </header>
     <main class="h-screen flex items-center justify-center">
         <!-- cart and payment part -->
-        <div class="flex gap-20">
+        <div class="flex gap-20 mt-10">
             <!-- cart details -->
             <div class="card w-[600px]  bg-base-100 shadow-xl">
                 <div class="card-body">
@@ -191,6 +191,12 @@
                             <span class="label-text">Your Name</span>
                         </div>
                         <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    </label>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">Phone Number</span>
+                        </div>
+                        <input type="text" placeholder="phone number" class="input input-bordered w-full max-w-xs" />
                     </label>
 
                     <label class="form-control w-full max-w-xs">

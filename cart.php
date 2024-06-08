@@ -198,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </div>
                         </div>
                         <!-- qty -->
-                        <div><p class="text-2xl"><?$item['qty'] ?></p></div>
+                        <div><p class="text-2xl">01</p></div>
                         <!-- Remove Button -->
                         <div class="ml-[170px]">
                             <form method="POST" action="remove_from_cart.php">

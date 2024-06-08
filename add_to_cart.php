@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     array_push($_SESSION['cart'], $product);
 
     // Redirect to the cart page
-    header('Location: cart.php');
+    header('Location: landing-page.php');
     exit();
 }
 

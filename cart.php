@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'components/connect.php';
 
 // Check if the form is submitted and product_id and qty are set
@@ -109,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             }
             $_SESSION['cart_total'] = $subtotal;
         }
-        echo $item_count;
+        
         ?>
         <!-- Nav bar -->
         <?php include 'components/navbar.php'; ?>

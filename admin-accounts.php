@@ -44,7 +44,7 @@ if (isset($_GET['delete'])) {
 
 <?php include 'components/admin_header.php'; ?>
 
-<section class="accounts">
+<secti class="accounts">
     <h3 class="font-pop text-center text-5xl font-bold text-green-950 mt-10">Admin Accounts</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-10">
     <?php

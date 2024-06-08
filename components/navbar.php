@@ -43,7 +43,7 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
         <div class="flex items-center">
           <!-- others button -->
           <div class="dropdown dropdown-hover">
-            <div tabindex="0" role="button" class="btn m-1">Others</div>
+            <div tabindex="0" role="button" class="btn m-1">Other Products</div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               <li><a href="fertilizer.php">Fertilizer</a></li>
               <li><a href="tools.php">Tools</a></li>
@@ -75,7 +75,7 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
               </div>
             </div>
             <div class="dropdown dropdown-end">
-              <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+              <div tabindex="0" role="button" class="btn btn-outline btn-primary w-[70px]">
                 <div class="w-[200px] rounded-full pt-1 text-xs">
                   <?php
                     echo "$username";

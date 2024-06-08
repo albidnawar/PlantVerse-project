@@ -76,10 +76,10 @@ $result = $conn->query("SELECT * FROM products ");
 
   <main>
     <!-- indoor carts 01-->
-<div class="cards-container">
+<div class="cards-container grid grid-cols-3  mt-10 ml-[100px]">
         <?php while ($row = $result->fetch_assoc()): ?>
           <?php if ($row['product_type'] === 'outdoor'): ?>
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card w-96 bg-base-100 shadow-xl mt-10">
                 <figure>
                     <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
                 </figure>
@@ -89,7 +89,7 @@ $result = $conn->query("SELECT * FROM products ");
                     <div class="card-actions flex items-center justify-between">
                         <p class="text-2xl"><strong>$<?= $row['price'] ?></strong></p>
                         <div class="mr-4">
-                        <input type="number" name="qty" class="input input-bordered input-sm w-full max-w-xs" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+                        <input type="number" name="qty" placeholder="qty" class="input input-bordered input-sm w-full max-w-xs" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
                       </div>
                         <a href="#" class="btn btn-success">Buy Now</a>
                     </div>

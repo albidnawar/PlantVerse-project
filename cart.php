@@ -63,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- tailwind custom classes -->
     <script>
         tailwind.config = {
@@ -94,21 +95,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
     </style>
 </head>
 
-<body class="w-[1519px] h-[1000px] bg-no-repeat bg-cover bg-left" style="background-image: url(images/backdrop-green-leaves.jpg)">
+<body class="w-[1519px] h-[1000px] bg-no-repeat bg-cover bg-left"
+    style="background-image: url(images/backdrop-green-leaves.jpg)">
     <!-- Header -->
     <header class="md:container md:mx-auto">
-    <?php
-                                            $item_count = 0;
-                                            $subtotal = 0;
-                                            if (isset($_SESSION['cart'])) {
-                                                foreach ($_SESSION['cart'] as $item) {
-                                                    $item_count += $item['qty'];
-                                                    $subtotal += $item['price'] * $item['qty'];
-                                                }
-                                                $_SESSION['cart_total'] = $subtotal;
-                                            }
-                                            echo $item_count;
-                                        ?>
+        <?php
+        $item_count = 0;
+        $subtotal = 0;
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $item_count += $item['qty'];
+                $subtotal += $item['price'] * $item['qty'];
+            }
+            $_SESSION['cart_total'] = $subtotal;
+        }
+        echo $item_count;
+        ?>
         <!-- Nav bar -->
         <?php include 'components/navbar.php'; ?>
 
@@ -124,10 +126,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
     <main class="h-screen flex items-center justify-center">
         <div class="w-[1365px] h-[806px] bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
             <div class="flex justify-between">
-                <div><p>Description</p></div>
-                <div><p>Quantity</p></div>
-                <div><p>Remove</p></div>
-                <div><p>Price</p></div>
+                <div>
+                    <p>Description</p>
+                </div>
+                <div>
+                    <p>Quantity</p>
+                </div>
+                <div>
+                    <p>Remove</p>
+                </div>
+                <div>
+                    <p>Price</p>
+                </div>
             </div>
 
             <!-- Cart items -->
@@ -147,15 +157,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </div>
                         </div>
                         <!-- qty -->
-                        <div><p class="text-2xl"><?php echo $item['qty']; ?>
-                        </p></div>
+                        <div>
+                            <p class="text-2xl"><?php echo $item['qty']; ?>
+                            </p>
+                        </div>
                         <!-- Remove Button -->
                         <div class="ml-[170px]">
                             <form method="POST" action="remove_from_cart.php">
                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                 <button type="submit" class="btn btn-square btn-outline">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </form>
@@ -176,7 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                     <div class="stat">
                         <div class="stat-title text-2xl pb-3">Input Discount Coupon</div>
                         <div class="flex">
-                            <div><input type="text" placeholder="Type here" class="input input-bordered input-secondary w-full max-w-xs" /></div>
+                            <div><input type="text" placeholder="Type here"
+                                    class="input input-bordered input-secondary w-full max-w-xs" /></div>
                             <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
                         </div>
                     </div>
@@ -194,11 +209,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                     </div>
                 </div>
                 <div class="ml-10">
-                    <a href="checkout.html"><button class="btn btn-wide btn-primary h-20 mt-8 text-3xl">Checkout</button></a>
+                    <a href="checkout.html"><button
+                            class="btn btn-wide btn-primary h-20 mt-8 text-3xl">Checkout</button></a>
                 </div>
             </div>
         </div>
     </main>
     <footer></footer>
 </body>
+
 </html>

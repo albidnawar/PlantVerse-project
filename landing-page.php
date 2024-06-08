@@ -93,10 +93,12 @@ if (!$result) {
                                 <form action="add_to_cart.php" method="post">
                                     <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
                                     <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
-                                    <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
                                     <input type="hidden" name="product_image" value="<?= $row['image_url'] ?>">
-                                    <input type="number" name="qty" class="input input-bordered input-sm w-full max-w-xs" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+                                    <div class="flex items-center">
+                                    <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
+                                    <input type="number" name="qty" placeholder="qty" class="input input-bordered input-sm w-full max-w-xs mr-3" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
                                     <button type="submit" class="btn btn-success">Buy Now</button>
+                                    </div>
                                 </form>
                                 </div>
                             </div>

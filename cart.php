@@ -176,6 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
         <div class="w-[1365px] h-[806px] bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
             <div class="flex justify-between">
                 <div><p>Description</p></div>
+                <div><p>Quantity</p></div>
                 <div><p>Remove</p></div>
                 <div><p>Price</p></div>
             </div>
@@ -196,6 +197,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                                 <p>product code <?= $item['id'] ?></p>
                             </div>
                         </div>
+                        <!-- qty -->
+                        <div><p class="text-2xl"><?$item['qty'] ?></p></div>
                         <!-- Remove Button -->
                         <div class="ml-[170px]">
                             <form method="POST" action="remove_from_cart.php">

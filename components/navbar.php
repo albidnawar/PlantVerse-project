@@ -3,7 +3,7 @@
 
   // Initialize cart count
 $cartCount = 0;
-
+$cartTotal = 0;
 // Check if the cart session exists and count the number of items
 if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
     $cartCount = count($_SESSION['cart']);

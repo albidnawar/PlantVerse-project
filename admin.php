@@ -165,7 +165,7 @@ if (isset($_GET['delete'])) {
     </form>
     </div>
 </div>
-<div class="cards-container flex gap-3 m-10">
+<div class="cards-container grid grid-cols-3  mt-10 ml-[100px] ">
     <?php
     $select_products = $conn->prepare("SELECT * FROM `products`");
     $select_products->execute();
@@ -173,7 +173,7 @@ if (isset($_GET['delete'])) {
     ?>
     <?php if($result->num_rows > 0): ?>
         <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card w-96 bg-base-100 shadow-xl mt-10">
                 <figure>
                     <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
                 </figure>

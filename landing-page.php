@@ -73,11 +73,11 @@ $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 
   <main>
     <!-- popular carts 01-->
-    <div class="cards-container">
+    <div class="cards-container grid grid-cols-3  mt-10 ml-[100px]">
         <?php while ($row = $result->fetch_assoc()): ?>
           <?php if ($row['product_type'] === 'landing'): ?>
 
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card w-96 bg-base-100 shadow-xl mt-10">
                 <figure>
                     <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
                 </figure>

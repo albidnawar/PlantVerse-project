@@ -6,7 +6,8 @@ $cartCount = 0;
 $cartTotal = 0;
 // Check if the cart session exists and count the number of items
 if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-    $cartCount = count($_SESSION['cart']);
+  foreach ($_SESSION['cart'] as $item) {
+    $cartCount += $item['qty'];}
     // Retrieve cart total from session
     $cartTotal = isset($_SESSION['cart_total']) ? $_SESSION['cart_total'] : 0;
 }
@@ -99,4 +100,4 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
           </div>
         </div>
       </div>
-    </nav>
+                </nav>

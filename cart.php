@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                                                     $item_count += $item['qty'];
                                                     $subtotal += $item['price'] * $item['qty'];
                                                 }
-                                                $_SESSION['cart_total'] = $cartTotal;
+                                                $_SESSION['cart_total'] = $subtotal;
                                             }
                                             echo $item_count;
                                         ?> Items

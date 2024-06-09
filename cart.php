@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
     </style>
 </head>
 
-<body class="w-[1519px] h-[1000px] bg-no-repeat bg-cover bg-left"
+<body class="w-[1519px] h-[1080px] bg-no-repeat bg-cover bg-left"
     style="background-image: url(images/backdrop-green-leaves.jpg)">
     <!-- Header -->
     <header class="md:container md:mx-auto">
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
         </div>
     </header>
 
-    <main class="h-screen flex items-center justify-center">
+    <main class="h-screen flex items-center justify-center ">
         <div class="w-[1365px] h-[806px] bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
             <div class="flex justify-between">
                 <div>
@@ -214,8 +214,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             </div>
         </div>
     </main>
-    <?php include 'components/footer.php'; ?>
-
+    <div class="mt-20"><?php include 'components/footer.php'; ?>
+    </div>
 </body>
 
 </html>

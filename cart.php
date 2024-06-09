@@ -1,6 +1,6 @@
 <?php
 include 'components/connect.php';
-
+session_start();
 // Check if the form is submitted and product_id and qty are set
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id']) && isset($_POST['qty'])) {
     $product_id = intval($_POST['product_id']);
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
         
         ?>
         <!-- Nav bar -->
-        <?php include 'components/navbar.php'; ?>
+        <?php include 'components/navbar_cart.php'; ?>
 
 
         <!-- variety options -->
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                 <div>
                     <p>Description</p>
                 </div>
-                <div class="ml-10">
+                <div class="ml-[80px]">
                     <p>Quantity</p>
                 </div>
                 <div>

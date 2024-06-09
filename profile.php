@@ -62,12 +62,13 @@
             <a href="outdoor.php"><button class="btn btn-outline btn-warning">Outdoor</button></a>
         </div>
     </header>
-    <main class="h-screen flex items-center justify-center">
+    <main class="h-screen flex items-center justify-center mb-10 mt-5">
         <!-- profile and placed orders -->
         <div class="flex gap-20 mt-10">
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title text-3xl">User Info</h2>
+                    <!-- user info change -->
                     <form action="update_user.php" method="POST">
                         <label class="form-control w-full max-w-xs">
                             <div class="label">
@@ -87,6 +88,10 @@
                             </div>
                             <input type="text" name="phone" placeholder="Phone" class="input input-bordered w-full max-w-xs" />
                         </label>
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                        </form>
+                        <!-- user password change -->
+                        <form action="user_password.php" method="POST" >
                         <h2 class="card-title mt-5">Change Password</h2>
                         <label class="form-control w-full max-w-xs">
                             <div class="label">

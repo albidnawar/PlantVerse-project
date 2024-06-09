@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
     </style>
 </head>
 
-<body class="w-[1519px] h-[1080px] bg-no-repeat bg-cover bg-left"
+<body class="w-[1519px] h-full bg-no-repeat bg-cover bg-left"
     style="background-image: url(images/backdrop-green-leaves.jpg)">
     <!-- Header -->
     <header class="md:container md:mx-auto">
@@ -122,19 +122,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
         </div>
     </header>
 
-    <main class="h-screen flex items-center justify-center ">
-        <div class="w-[1365px] h-[806px] bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
+    <main class="h-full flex items-center justify-center ">
+        <div class="w-[1400px] h-full bg-base-200 flex-col justify-between px-20 py-10 shadow-lg">
             <div class="flex justify-between">
                 <div>
                     <p>Description</p>
                 </div>
-                <div>
+                <div class="ml-10">
                     <p>Quantity</p>
                 </div>
                 <div>
                     <p>Remove</p>
                 </div>
-                <div>
+                <div class="pr-4">
                     <p>Price</p>
                 </div>
             </div>
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             <!-- Cart items -->
             <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
                 <?php foreach ($_SESSION['cart'] as $item): ?>
-                    <div class="pt-8 flex items-center">
+                    <div class="pt-8 flex items-center justify-between">
                         <!-- image and description -->
                         <div class="flex gap-4">
                             <div class="avatar">
@@ -156,12 +156,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </div>
                         </div>
                         <!-- qty -->
-                        <div class="ml-[195px]">
+                        <div class="">
                             <p class="text-2xl"><?php echo $item['qty']; ?>
                             </p>
                         </div>
                         <!-- Remove Button -->
-                        <div class="ml-[357px]">
+                        <div class="">
                             <form method="POST" action="remove_from_cart.php">
                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                 <button type="submit" class="btn btn-square btn-outline">
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </form>
                         </div>
                         <!-- Price -->
-                        <div class="ml-[295px]">
+                        <div class="">
                             <p class="text-2xl">$<?= $item['price'] ?></p>
                         </div>
                     </div>

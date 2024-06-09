@@ -80,7 +80,7 @@ if (!$result) {
         <div class="cards-container  grid grid-cols-3  mt-10 ml-[100px]" >
             <?php while ($row = $result->fetch_assoc()): ?>
                 <?php if ($row['product_type'] === 'landing'): ?>
-                    <div class="card w-96 bg-base-100 shadow-xl  mt-10">
+                    <div class="card w-96 bg-base-100 shadow-xl  mt-5 mb-10">
                         <figure>
                             <img src="<?= $row['image_url'] ?>" class="card-img-top" alt="<?= $row['name'] ?>">
                         </figure>
@@ -109,9 +109,8 @@ if (!$result) {
         </div>
     </main>
 
-    <footer>
+    <?php include 'components/footer.php'; ?>
 
-    </footer>
 </body>
 
 </html>

@@ -111,9 +111,8 @@ $result = $conn->query("SELECT * FROM products ");
        
   </main>
 
-  <footer>
+  <?php include 'components/footer.php'; ?>
 
-  </footer>
 </body>
 
 </html>

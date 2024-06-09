@@ -214,7 +214,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             </div>
         </div>
     </main>
-    <footer></footer>
+    <?php include 'components/footer.php'; ?>
+
 </body>
 
 </html>

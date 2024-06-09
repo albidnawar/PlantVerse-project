@@ -245,7 +245,7 @@
         </div>
 
     </main>
-    <?php include 'components/footer.php'; ?>
+    <div class="mt-20"><?php include 'components/footer.php'; ?></div>
 
 </body>
 

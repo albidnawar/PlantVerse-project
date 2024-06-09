@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             <!-- Cart items -->
             <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
                 <?php foreach ($_SESSION['cart'] as $item): ?>
-                    <div class="pt-8 flex items-center justify-between">
+                    <div class="pt-8 flex items-center">
                         <!-- image and description -->
                         <div class="flex gap-4">
                             <div class="avatar">
@@ -156,12 +156,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </div>
                         </div>
                         <!-- qty -->
-                        <div>
+                        <div class="ml-[195px]">
                             <p class="text-2xl"><?php echo $item['qty']; ?>
                             </p>
                         </div>
                         <!-- Remove Button -->
-                        <div class="ml-[170px]">
+                        <div class="ml-[357px]">
                             <form method="POST" action="remove_from_cart.php">
                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
                                 <button type="submit" class="btn btn-square btn-outline">
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
                             </form>
                         </div>
                         <!-- Price -->
-                        <div class="ml-[325px]">
+                        <div class="ml-[295px]">
                             <p class="text-2xl">$<?= $item['price'] ?></p>
                         </div>
                     </div>

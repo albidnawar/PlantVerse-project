@@ -1,3 +1,45 @@
+<?php
+include 'components/connect.php';
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Collecting user data from the form
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $country = $_POST['country'];
+    $card_info = $_POST['card_info'];
+    $card_expiry = $_POST['card_expiry'];
+    $card_cvc = $_POST['card_cvc'];
+
+    // Assuming you have a table orders to save the order details
+    $stmt = $conn->prepare("INSERT INTO orders (name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $total_due = $_SESSION['cart_total'] + 5; // Including $5 for shipping
+    $stmt->bind_param("ssssssd", $name, $address, $country, $card_info, $card_expiry, $card_cvc, $total_due);
+
+    if ($stmt->execute()) {
+        // Get the last inserted order ID
+        $order_id = $stmt->insert_id;
+
+        // Save order items
+        $stmt = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
+
+        foreach ($_SESSION['cart'] as $item) {
+            $stmt->bind_param("iiid", $order_id, $item['id'], $item['qty'], $item['price']);
+            $stmt->execute();
+        }
+
+        // Clear the cart
+        unset($_SESSION['cart']);
+        unset($_SESSION['cart_total']);
+        
+        // Display confirmation message and redirect to landing page
+        echo "<script>alert('Order confirmed'); window.location.href='landing-page.php';</script>";
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" data-theme="cupcake">
 
@@ -27,13 +69,11 @@
                 }
             }
         }
-
     </script>
     <!--custom styles-->
     <style>
         .font-pop {
             font-family: 'Poppins', sans-serif;
-
         }
 
         .custom-hr {
@@ -51,11 +91,10 @@
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
-
-    <?php include 'components/navbar.php'; ?>
+        <?php include 'components/navbar.php'; ?>
 
         <!-- variety options -->
-        <div class="join flex justify-center  mt-5 gap-5">
+        <div class="join flex justify-center mt-5 gap-5">
             <a href="landing-page.php"><button class="btn btn-outline btn-info">Popular</button></a>
             <a href="Indoor.php"><button class="btn btn-outline btn-success">Indoor</button></a>
             <a href="outdoor.php"><button class="btn btn-outline btn-warning">Outdoor</button></a>
@@ -63,102 +102,39 @@
     </header>
     <main class="h-screen flex items-center justify-center">
         <!-- cart and payment part -->
-        <div class="flex gap-20 mt-10">
+        <div class="flex gap-20">
             <!-- cart details -->
-            <div class="card w-[600px]  bg-base-100 shadow-xl">
+            <div class="card w-[600px] bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <h2 class="card-title ">Cart Summary</h2>
-                    <!-- item 01 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
+                    <h2 class="card-title">Cart Summary</h2>
+                    <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])): ?>
+                        <?php foreach ($_SESSION['cart'] as $item): ?>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-5 mt-5">
+                                    <div class="avatar">
+                                        <div class="w-12 mask mask-squircle">
+                                            <img src="<?= $item['image'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p><?= $item['name'] ?></p>
+                                        <p>Qty: <span><?= $item['qty'] ?></span></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-xl">$<?= number_format($item['price'] * $item['qty'], 2) ?></p>
                                 </div>
                             </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 02 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 03 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 04 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
-                    <!-- item 05 -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-5 mt-5">
-                            <div class="avatar">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="images/philodendron.jpg" />
-                                </div>
-                            </div>
-                            <div>
-                                <p>Philodendron</p>
-                                <p>Qty: <span>4</span></p>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">$65.00</p>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Your cart is empty.</p>
+                    <?php endif; ?>
                     <div class="flex justify-between mt-5">
                         <div>
                             <p>Subtotal</p>
                         </div>
                         <div>
-                            <p class="font-bold text-xl">$125.00</p>
+                            <p class="font-bold text-xl">$<?= number_format($_SESSION['cart_total'], 2) ?></p>
                         </div>
                     </div>
                     <hr>
@@ -176,77 +152,54 @@
                             <p class="font-bold text-xl">Total Due</p>
                         </div>
                         <div>
-                            <p class="font-bold text-xl">$130.00</p>
+                            <p class="font-bold text-xl">$<?= number_format($_SESSION['cart_total'] + 5, 2) ?></p>
                         </div>
                     </div>
-
                 </div>
             </div>
             <!-- payment system -->
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <h2 class="card-title">Shipping Information</h2>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Your Name</span>
-                        </div>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Phone Number</span>
-                        </div>
-                        <input type="text" placeholder="phone number" class="input input-bordered w-full max-w-xs" />
-                    </label>
-
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Shipping Address</span>
-                        </div>
-                        <input type="text" placeholder="Address" class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <label class="form-control w-full max-w-xs">
-                        <input type="text" placeholder="Country" class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <h2 class="card-title mt-5">Payment Details</h2>
-                    <label class="form-control w-full max-w-xs">
-                        <div class="label">
-                            <span class="label-text">Card Information</span>
-                        </div>
-                        <input type="text" placeholder="1234 1234 1234 1234"
-                            class="input input-bordered w-full max-w-xs" />
-                    </label>
-                    <div class="flex gap-2">
+                    <form method="POST" action="checkout.php">
+                        <h2 class="card-title">Shipping Information</h2>
                         <label class="form-control w-full max-w-xs">
-                            <input type="text" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" />
-                        </label>
-                        <label class="form-control w-full max-w-xs">
-                            <input type="text" placeholder="CVC" class="input input-bordered w-full max-w-xs" />
-                        </label>
-                    </div>
-                    <button class="btn" onclick="my_modal_5.showModal()">Place Order</button>
-                    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                            <h3 class="font-bold text-2xl">Your Order is Placed!</h3>
-                            <p class="py-4">Press to see your order progress</p>
-                            <a href="profile.html"><button class="btn  btn-primary">Your Orders</button></a>
-                            <div class="modal-action">
-                                <form method="dialog">
-                                    <!-- if there is a button in form, it will close the modal -->
-                                    <button class="btn">Close</button>
-                                </form>
+                            <div class="label">
+                                <span class="label-text">Your Name</span>
                             </div>
+                            <input type="text" name="name" placeholder="Type here" class="input input-bordered w-full max-w-xs" required />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Shipping Address</span>
+                            </div>
+                            <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs" required />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <input type="text" name="country" placeholder="Country" class="input input-bordered w-full max-w-xs" required />
+                        </label>
+                        <h2 class="card-title mt-5">Payment Details</h2>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text">Card Information</span>
+                            </div>
+                            <input type="text" name="card_info" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs" required />
+                        </label>
+                        <div class="flex gap-2">
+                            <label class="form-control w-full max-w-xs">
+                                <input type="text" name="card_expiry" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" required />
+                            </label>
+                            <label class="form-control w-full max-w-xs">
+                                <input type="text" name="card_cvc" placeholder="CVC" class="input input-bordered w-full max-w-xs" required />
+                            </label>
                         </div>
-                    </dialog>
-
-
+                        <button type="submit" class="btn">Place Order</button>
+                    </form>
                 </div>
             </div>
         </div>
-
     </main>
-    <div class="mt-20"><?php include 'components/footer.php'; ?></div>
-
+    <footer>
+    </footer>
 </body>
 
 </html>

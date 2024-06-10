@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
-        <?php include 'components/navbar.php'; ?>
+        <?php include 'components/navbar_cart.php'; ?>
 
         <!-- variety options -->
         <div class="join flex justify-center mt-5 gap-5">
@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                             <div class="label">
                                 <span class="label-text">Shipping Address</span>
                             </div>
-                            <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs" required />
+                            <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs mb-3" required />
                         </label>
                         <label class="form-control w-full max-w-xs">
                             <input type="text" name="country" placeholder="Country" class="input input-bordered w-full max-w-xs" required />
@@ -202,11 +202,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                             <div class="label">
                                 <span class="label-text">Card Information</span>
                             </div>
-                            <input type="text" name="card_info" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs" required />
+                            <input type="text" name="card_info" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs mb-3" required />
                         </label>
                         <div class="flex gap-2">
                             <label class="form-control w-full max-w-xs">
-                                <input type="text" name="card_expiry" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" required />
+                                <input type="text" name="card_expiry" placeholder="MM/YY" class="input input-bordered w-full max-w-xs mb-3" required />
                             </label>
                             <label class="form-control w-full max-w-xs">
                                 <input type="text" name="card_cvc" placeholder="CVC" class="input input-bordered w-full max-w-xs" required />

@@ -2,12 +2,6 @@
 include 'components/connect.php';
 session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('You need to login to view this page'); window.location.href='login.php';</script>";
-    exit();
-}
-
 // Get user ID from session
 $user_id = $_SESSION['user_id'];
 

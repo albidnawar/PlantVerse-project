@@ -146,59 +146,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                 </div>
             </div>
             <!-- Order details -->
-            <div class="card w-[600px]  bg-base-100 shadow-xl">
-                <div class="overflow-x-auto">
-                    <table class="table">
-                      <!-- head -->
-                      <thead>
-                        <tr>
-                          <th>Order No</th>
-                          <th>Date</th>
-                          <th>Status</th>
-                          <th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- row 1 -->
-                        <tr class="hover">
-                          <th>#AN0001</th>
-                          <td>June 01,2024</td>
-                          <td>placed</td>
-                          <td>$135.00</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr class="hover">
-                            <th>#AN0001</th>
-                            <td>June 01,2024</td>
-                            <td>placed</td>
-                            <td>$135.00</td>
-                          </tr>
-                        <!-- row 3 -->
-                        <tr class="hover">
-                            <th>#AN0001</th>
-                            <td>June 01,2024</td>
-                            <td>placed</td>
-                            <td>$135.00</td>
-                          </tr>
-                        <!-- row 04 -->
-                        <tr class="hover">
-                            <th>#AN0001</th>
-                            <td>June 01,2024</td>
-                            <td>placed</td>
-                            <td>$135.00</td>
-                          </tr>
-                        <!-- row 05 -->
-                        <tr class="hover">
-                            <th>#AN0001</th>
-                            <td>June 01,2024</td>
-                            <td>placed</td>
-                            <td>$135.00</td>
-                          </tr>
-                      </tbody>
-                    </table>
-                  </div>
-            </div>            
+            <div class="card w-[600px] bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Previous Orders</h2>
+                    <?php if ($orders): ?>
+                        <?php foreach ($orders as $order): ?>
+                            <div class="mt-5">
+                                <p class="font-bold text-xl">Order ID: <?= $order['id'] ?></p>
+                                <p>Order Date: <?= $order['created_at'] ?></p>
+                                <p>Status: Placed</p>
+                                <p>Total: $<?= $order['total'] ?></p>
+                                <hr class="mt-3">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No previous orders found.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
+
 
     </main>
     <?php include 'components/footer.php'; ?>

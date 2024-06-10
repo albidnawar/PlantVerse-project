@@ -190,6 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                         </label>
                         <label class="form-control w-full max-w-xs">
                             <div class="label">
+                                <span class="label-text">Your Number</span>
+                            </div>
+                            <input type="text" name="phone" placeholder="Type number" class="input input-bordered w-full max-w-xs" required />
+                        </label>
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
                                 <span class="label-text">Shipping Address</span>
                             </div>
                             <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs mb-3" required />

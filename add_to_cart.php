@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Check if user is logged in
+if (!isset($_SESSION['user_name'])) {
+    echo "<script>alert('You need to login to purchase'); window.location.href='sign-in.html';</script>";
+    exit();
+}
+
 // Check if form data is sent via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Retrieve product details from POST request

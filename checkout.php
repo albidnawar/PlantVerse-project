@@ -4,17 +4,18 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collecting user data from the form
+    $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
     $address = $_POST['address'];
     $country = $_POST['country'];
     $card_info = $_POST['card_info'];
     $card_expiry = $_POST['card_expiry'];
     $card_cvc = $_POST['card_cvc'];
+    $total = $_SESSION['cart_total'] + 5; // Including $5 for shipping
 
-    // Assuming you have a table orders to save the order details
-    $stmt = $conn->prepare("INSERT INTO orders (name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $total_due = $_SESSION['cart_total'] + 5; // Including $5 for shipping
-    $stmt->bind_param("ssssssd", $name, $address, $country, $card_info, $card_expiry, $card_cvc, $total_due);
+    // Insert order details into orders table with user_id
+    $stmt = $conn->prepare("INSERT INTO orders (user_id, name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issssssd", $user_id, $name, $address, $country, $card_info, $card_expiry, $card_cvc, $total);
 
     if ($stmt->execute()) {
         // Get the last inserted order ID
@@ -37,6 +38,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     } else {
         echo "Error: " . $stmt->error;
+    }
+}
+// Handle password change
+$password_change_msg = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
+    $new_password = $_POST['new_password'];
+    $confirm_new_password = $_POST['confirm_new_password'];
+
+    if ($new_password === $confirm_new_password) {
+        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->bind_param("si", $hashed_new_password, $user_id);
+        if ($stmt->execute()) {
+            $password_change_msg = 'Password successfully changed.';
+        } else {
+            $password_change_msg = 'Error updating password. Please try again.';
+        }
+    } else {
+        $password_change_msg = 'New passwords do not match.';
     }
 }
 ?>

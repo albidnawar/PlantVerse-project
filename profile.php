@@ -1,3 +1,38 @@
+<?php
+include 'components/connect.php';
+session_start();
+
+// Get user ID from session
+$user_id = $_SESSION['user_id'];
+
+// Fetch user's previous orders from the database
+$stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$orders = $result->fetch_all(MYSQLI_ASSOC);
+
+// Handle password change
+$password_change_msg = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
+    $new_password = $_POST['new_password'];
+    $confirm_new_password = $_POST['confirm_new_password'];
+
+    if ($new_password === $confirm_new_password) {
+        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->bind_param("si", $hashed_new_password, $user_id);
+        if ($stmt->execute()) {
+            $password_change_msg = 'Password successfully changed.';
+        } else {
+            $password_change_msg = 'Error updating password. Please try again.';
+        }
+    } else {
+        $password_change_msg = 'New passwords do not match.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-theme="cupcake">
 
@@ -91,25 +126,25 @@
                         <button type="submit" class="btn btn-primary mt-5">Submit</button>
                         </form>
                         <!-- user password change -->
-                        <form action="user_password.php" method="POST" >
+                        <form action="change_password.php" method="POST" >
                         <h2 class="card-title mt-5">Change Password</h2>
+                    <?php if ($password_change_msg): ?>
+                        <p class="text-red-500"><?php echo $password_change_msg; ?></p>
+                    <?php endif; ?>
+                    <form method="POST">
+                        <input type="hidden" name="change_password" value="1">
                         <label class="form-control w-full max-w-xs">
-                            <div class="label">
-                                <span class="label-text">Password</span>
-                            </div>
-                            <input type="password" name="password" placeholder="Password" class="input input-bordered w-full max-w-xs" />
+                            <span class="label-text">New Password</span>
+                            <input type="password" name="new_password" placeholder="Type here" class="input input-bordered w-full max-w-xs" required>
                         </label>
-                        <label class="form-control w-full max-w-xs">
-                            <div class="label">
-                                <span class="label-text">Rewrite Password</span>
-                            </div>
-                            <input type="password" name="password_confirmation" placeholder="Rewrite Password" class="input input-bordered w-full max-w-xs" />
+                        <label class="form-control w-full max-w-xs mt-3">
+                            <span class="label-text">Confirm New Password</span>
+                            <input type="password" name="confirm_new_password" placeholder="Type here" class="input input-bordered w-full max-w-xs" required>
                         </label>
-                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                        <button type="submit" class="btn btn-primary mt-5">Change Password</button>
                     </form>
                 </div>
             </div>
-
             <!-- Order details -->
             <div class="card w-[600px]  bg-base-100 shadow-xl">
                 <div class="overflow-x-auto">

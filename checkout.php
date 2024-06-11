@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collecting user data from the form
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['id'];
     $name = $_POST['name'];
     $address = $_POST['address'];
     $country = $_POST['country'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $total = $_SESSION['cart_total'] + 5; // Including $5 for shipping
 
     // Insert order details into orders table with user_id
-    $stmt = $conn->prepare("INSERT INTO orders (user_id, name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO orders (id, name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("issssssd", $user_id, $name, $address, $country, $card_info, $card_expiry, $card_cvc, $total);
 
     if ($stmt->execute()) {

@@ -6,7 +6,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 // Fetch user's previous orders from the database
-$stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC");
+$stmt = $conn->prepare("SELECT * FROM orders WHERE id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
-        <?php include 'components/navbar.php'; ?>
+        <?php include 'components/navbar_cart.php'; ?>
 
 
 

@@ -6,7 +6,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 // Fetch user's previous orders from the database
-$stmt = $conn->prepare("SELECT * FROM orders WHERE id = ? ORDER BY created_at DESC");
+$stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();

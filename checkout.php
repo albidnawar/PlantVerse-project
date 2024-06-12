@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Collecting user data from the form
-    $user_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
     $name = $_POST['name'];
     $address = $_POST['address'];
     $country = $_POST['country'];
@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $card_expiry = $_POST['card_expiry'];
     $card_cvc = $_POST['card_cvc'];
     $total = $_SESSION['cart_total'] + 5; // Including $5 for shipping
-    
+
     // Insert order details into orders table with user_id
-    $stmt = $conn->prepare("INSERT INTO orders (id, name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO orders (user_id, name, address, country, card_info, card_expiry, card_cvc, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("issssssd", $user_id, $name, $address, $country, $card_info, $card_expiry, $card_cvc, $total);
 
     if ($stmt->execute()) {
@@ -38,6 +38,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     } else {
         echo "Error: " . $stmt->error;
+    }
+}
+// Handle password change
+$password_change_msg = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
+    $new_password = $_POST['new_password'];
+    $confirm_new_password = $_POST['confirm_new_password'];
+
+    if ($new_password === $confirm_new_password) {
+        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->bind_param("si", $hashed_new_password, $user_id);
+        if ($stmt->execute()) {
+            $password_change_msg = 'Password successfully changed.';
+        } else {
+            $password_change_msg = 'Error updating password. Please try again.';
+        }
+    } else {
+        $password_change_msg = 'New passwords do not match.';
     }
 }
 ?>
@@ -92,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
-        <?php include 'components/navbar_cart.php'; ?>
+        <?php include 'components/navbar.php'; ?>
 
         <!-- variety options -->
         <div class="join flex justify-center mt-5 gap-5">
@@ -171,15 +190,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </label>
                         <label class="form-control w-full max-w-xs">
                             <div class="label">
-                                <span class="label-text">Your Number</span>
-                            </div>
-                            <input type="text" name="phone" placeholder="Type number" class="input input-bordered w-full max-w-xs" required />
-                        </label>
-                        <label class="form-control w-full max-w-xs">
-                            <div class="label">
                                 <span class="label-text">Shipping Address</span>
                             </div>
-                            <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs mb-3" required />
+                            <input type="text" name="address" placeholder="Address" class="input input-bordered w-full max-w-xs" required />
                         </label>
                         <label class="form-control w-full max-w-xs">
                             <input type="text" name="country" placeholder="Country" class="input input-bordered w-full max-w-xs" required />
@@ -189,11 +202,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="label">
                                 <span class="label-text">Card Information</span>
                             </div>
-                            <input type="text" name="card_info" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs mb-3" required />
+                            <input type="text" name="card_info" placeholder="1234 1234 1234 1234" class="input input-bordered w-full max-w-xs" required />
                         </label>
                         <div class="flex gap-2">
                             <label class="form-control w-full max-w-xs">
-                                <input type="text" name="card_expiry" placeholder="MM/YY" class="input input-bordered w-full max-w-xs mb-3" required />
+                                <input type="text" name="card_expiry" placeholder="MM/YY" class="input input-bordered w-full max-w-xs" required />
                             </label>
                             <label class="form-control w-full max-w-xs">
                                 <input type="text" name="card_cvc" placeholder="CVC" class="input input-bordered w-full max-w-xs" required />

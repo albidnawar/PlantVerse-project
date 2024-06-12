@@ -186,25 +186,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove_product_id'])) 
             <!-- Cart discount and total amount section -->
             <div class="flex items-center justify-between mt-10">
                 <div class="stats shadow">
-                    <div class="stat">
-                        <div class="stat-title text-2xl pb-3">Input Discount Coupon</div>
-                        <div class="flex">
-                            <div><input type="text" placeholder="Type here"
-                                    class="input input-bordered input-secondary w-full max-w-xs" /></div>
-                            <div class="ml-[5px]"><input type="submit" value="Submit" class="btn" /></div>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-title text-2xl">Discount Amount</div>
-                        <div class="stat-value text-primary">$50</div>
-                    </div>
+                    
+                    
                     <div class="stat">
                         <div class="stat-title text-2xl">Delivery Charge</div>
                         <div class="stat-value text-secondary">$5</div>
                     </div>
                     <div class="stat">
                         <div class="stat-title text-2xl">Total</div>
-                        <div class="stat-value text-secondary">$<?= $subtotal - 50 + 5 ?></div>
+                        <div class="stat-value text-secondary">$<?= $subtotal + 5 ?></div>
                     </div>
                 </div>
                 <div class="ml-10">

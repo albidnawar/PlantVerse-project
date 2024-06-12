@@ -5,7 +5,7 @@
   <div class="flex gap-10 text-white">
     <a href="admin.php">Products</a>
     <a href="admin-usersAccount.php">Users</a>
-    <a href="">Orders</a>
+    <a href="admin_orders.php">Orders</a>
     <a href="admin-accounts.php">Admins</a>
   </div>
   <div >

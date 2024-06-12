@@ -30,6 +30,7 @@ CREATE TABLE admin (
 
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     country VARCHAR(100) NOT NULL,

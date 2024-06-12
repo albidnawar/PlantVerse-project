@@ -31,4 +31,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<script>alert('Invalid request method.'); window.location.href='profile.php';</script>";
     exit();
 }
-?>
+

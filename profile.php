@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
     <!-- Header -->
     <header class="md:container md:mx-auto">
         <!-- Nav bar -->
-        <?php include 'components/navbar.php'; ?>
+        <?php include 'components/navbar_cart.php'; ?>
 
 
 
